@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Library</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="about.html">
+    <link rel="stylesheet" href="menu.html">
+    <link rel="stylesheet" href="ceklogin.php">
+    <link rel="stylesheet" href="indexlogin.html">
+    
+    <link rel="stylesheet"href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://font.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+</head>
+<body>
+    <!-- Home Section -->
+    <section class="home" id="home">
+        <div class="home-text">
+            <h1>Halo, Readers</h1>
+            <h2>Hub of Knowledge For <br> Transformation.</h2>
+            <a href="indexlogin.html" class="btn">Sign Up!</a>
+        </div>
+        <div class="home-img">
+            <img src="perpus.jpg" alt="Library Image" width="768" height="432">
+        </div>
+    </section>
+
+    <nav>
+       <div class="menu-icon">
+          <span class="fas fa-bars"></span>
+       </div>
+       <div class="logo">E-Library</div>
+       <div class="nav-items">
+          <li><a href="indexafter.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="Contact.html">Contact</a></li>
+       </div>
+       <div class="search-icon">
+          <span class="fas fa-search"></span>
+       </div>
+       <div class="cancel-icon">
+          <span class="fas fa-times"></span>
+       </div>
+       <form action="#">
+          <input type="search" class="search-data" placeholder="Search" required>
+          <button type="submit" class="fas fa-search"></button>
+       </form>
+
+       <div class="darkLight-searchBox">
+        <div class="dark-light">
+            <i class='bx bx-moon moon'></i>
+            <i class='bx bx-sun sun'></i>
+        </div>
+        </div>
+    </nav>
+    <script>
+
+        const body = document.querySelector("body"),
+              nav = document.querySelector("nav"),
+              modeToggle = document.querySelector(".dark-light"),
+              searchToggle = document.querySelector(".searchToggle"),
+              sidebarOpen = document.querySelector(".sidebarOpen"),
+              siderbarClose = document.querySelector(".siderbarClose");
+              let getMode = localStorage.getItem("mode");
+                  if(getMode && getMode === "dark-mode"){
+                    body.classList.add("dark");
+                  }
+        // js code to toggle dark and light mode
+              modeToggle.addEventListener("click" , () =>{
+                modeToggle.classList.toggle("active");
+                body.classList.toggle("dark");
+                // js code to keep user selected mode even page refresh or file reopen
+                if(!body.classList.contains("dark")){
+                    localStorage.setItem("mode" , "light-mode");
+                }else{
+                    localStorage.setItem("mode" , "dark-mode");
+                }
+              });
+        // js code to toggle search box
+                searchToggle.addEventListener("click" , () =>{
+                searchToggle.classList.toggle("active");
+              });
+         
+              
+        //   js code to toggle sidebar
+        sidebarOpen.addEventListener("click" , () =>{
+            nav.classList.add("active");
+        });
+        body.addEventListener("click" , e =>{
+            let clickedElm = e.target;
+            if(!clickedElm.classList.contains("sidebarOpen") && !clickedElm.classList.contains("menu")){
+                nav.classList.remove("active");
+            }
+        });
+        </script>
+    </body>
+</html>
